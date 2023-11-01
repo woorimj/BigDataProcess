@@ -21,17 +21,21 @@ for row in range(2, sheet.max_row + 1):
         if aStu > 0:
             grade = "A+"
             aStu -= 1
-        elif aStu == 0 and bplusStu > 0:
-            grade = "A0" if aStu == 0 else "B+"
+        elif bplusStu > 0:
+            grade = "A0"
+            if aStu == 0:
+                grade = "B+"
             bplusStu -= 1
         elif bStu > 0:
             grade = "B0"
             bStu -= 1
-        elif bStu == 0 and bplusStu > 0:
-            grade = "B+" if bStu == 0 else "C+"
+        elif bplusStu > 0:
+            grade = "B+"
+            if bStu == 0:
+                grade = "C+"
             bplusStu -= 1
         else:
-            grade = "C0" if cStu > 0 else "C"
+            grade = "C"
 
     sheet.cell(row=row, column=8, value=grade)
 
