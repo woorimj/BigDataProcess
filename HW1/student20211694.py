@@ -41,11 +41,11 @@ for i in range(len(data)):
 # 학번으로 다시 오름차순 정렬
 data = sorted(data, key=lambda row: row[0])
 
-# 엑셀에 데이터 입력
-for i in range(2, len(data) + 2):
-    row_data = data[i - 2]
-    for j in range(1, len(row_data) + 1):
-        sheet.cell(row=i, column=j, value=row_data[j - 1])
+# # 엑셀에 데이터 입력
+# for i in range(2, len(data) + 2):
+#     row_data = data[i - 2]
+#     for j in range(1, len(row_data) + 1):
+#         sheet.cell(row=i, column=j, value=row_data[j - 1])
 
 # 엑셀 파일 저장
 wb.save("student.xlsx")
