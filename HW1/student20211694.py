@@ -30,7 +30,7 @@ for i in range(len(data)):
         else:
             grade = grades[1]
     elif i < B:
-        if i < B_plus:
+        if i < A + B_plus:
             grade = grades[2]
         else:
             grade = grades[3]
@@ -42,6 +42,7 @@ for i in range(len(data)):
 # 학번으로 다시 오름차순 정렬
 data = sorted(data, key=lambda row: row[0])
 
+# 테스트용으로 등급으로 정렬해봄
 # data = sorted(data, key=lambda row: grades.index(row[7]))
 
 # 엑셀에 데이터 입력
