@@ -17,6 +17,8 @@ A = int(students * 0.3)
 A_plus = int(students * 0.3 * 0.5)
 B = int(students * 0.7)
 B_plus = int(students * 0.7 * 0.5)
+C = students - A - B
+C_plus = min(int(C * 0.5), C)
 
 grades = ["A+", "A0", "B+", "B0", "C+", "C0", "F"]
 
@@ -34,16 +36,21 @@ for i in range(len(data)):
             grade = grades[2]
         else:
             grade = grades[3]
+    elif i < students - C:
+        if i < students - C + C_plus:
+            grade = grades[4]
+        else:
+            grade = grades[5]
     else:
-        grade = grades[4]
+        grade = grades[6]
     row[7] = grade
     data[i] = tuple(row)
 
 # 학번으로 다시 오름차순 정렬
-data = sorted(data, key=lambda row: row[0])
+# data = sorted(data, key=lambda row: row[0])
 
 # 테스트용으로 등급으로 정렬해봄
-# data = sorted(data, key=lambda row: grades.index(row[7]))
+data = sorted(data, key=lambda row: grades.index(row[7]))
 
 # 엑셀에 데이터 입력
 for i in range(2, len(data) + 2):
