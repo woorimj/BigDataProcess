@@ -1,7 +1,8 @@
 #!/usr/bin/python3
+import sys
 
 counts = {}
-with open("movies_exp.txt", "r") as file:
+with open(sys.argv[1], "r") as file:
     for line in file:
         line = line.strip()
         splits = line.split("::")  # '::'으로 세부분으로 나누기 (id, 영화제목, 장르)
@@ -19,6 +20,6 @@ with open("movies_exp.txt", "r") as file:
                 counts[genre] = 1
 
 # 결과저장
-with open("movieoutput.txt", "w") as output:
+with open(sys.argv[2], "w") as output:
     for genre, count in counts.items():
         output.write(f"{genre} {count}\n")
