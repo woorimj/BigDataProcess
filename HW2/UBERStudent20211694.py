@@ -23,9 +23,9 @@ with open(sys.argv[1], "r") as input:
         #     week = weekDay.split("/")  # 해당 요일 문자열로 줌
         #     day = week[(day - 1) % 7]
 
-        output = f"{baseNumber},{day} {vehicles},{trips}"
-
+        output = f"{baseNumber},{day}", f"{vehicles},{trips}"
         result.append(output)
 
 with open(sys.argv[2], "w") as output:
-    output.writelines(result)
+    for r in result:
+        output.write(" ".join(r))
