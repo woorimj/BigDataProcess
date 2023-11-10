@@ -2,7 +2,7 @@
 import datetime
 import sys
 
-result = []
+result = {}
 weekDay = "MON/TUE/WED/THU/FRI/SAT/SUN"
 with open(sys.argv[1], "r") as input:
     for line in input:
@@ -23,9 +23,13 @@ with open(sys.argv[1], "r") as input:
         #     week = weekDay.split("/")  # 해당 요일 문자열로 줌
         #     day = week[(day - 1) % 7]
 
-        output = f"{baseNumber},{day}", f"{vehicles},{trips}"
-        result.append(output)
+        key = (baseNumber, day)
+        if key not in result:
+            result[key] = (0, 0)
+        # 이미 존재하는 키이면 값 더하기
+        v, t = result[key]
+        result[key] = (v + int(vehicles), t + int(trips))
 
 with open(sys.argv[2], "w") as output:
-    for r in result:
-        output.write(" ".join(r))
+    for (baseNumber, day), (vehicles, trips) in result.items():
+        output.write(f"{baseNumber},{day} {vehicles},{trips}\n")
