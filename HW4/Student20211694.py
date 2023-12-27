@@ -49,7 +49,7 @@ def reshape_data(filename):
             line = f.readline()
             for j in range(32):
                 reshape_data[0, 32 * i + j] = int(line[j])
-            return reshape_data
+        return reshape_data
 
 
 # trainingDigits와 testDigits로부터 숫자 데이터 읽기
